@@ -4,9 +4,10 @@ import css from "./SignIn.module.css";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { login, LoginRequest } from "@/lib/api/clientApi";
-import { ApiError } from "@/app/api/api";
+
 import { useAuthStore } from "@/lib/store/authStore";
 import Button from "@/components/Button/Button";
+import { AxiosError } from "axios";
 
 export default function SignIn() {
   const router = useRouter();
@@ -25,11 +26,9 @@ export default function SignIn() {
         setError("Invalid email or password");
       }
     } catch (error) {
-      setError(
-        (error as ApiError).response?.data?.error ??
-          (error as ApiError).message ??
-          "Oops... some error"
-      );
+      const axiosError = error as AxiosError<{ message: string }>;
+
+      setError(axiosError.response?.data?.message || "Registration failed");
     }
   };
 

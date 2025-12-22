@@ -1,4 +1,3 @@
-import { fetchNotes } from "@/lib/api";
 import {
   dehydrate,
   HydrationBoundary,
@@ -7,6 +6,7 @@ import {
 import NotesClient from "./Notes.client";
 import { NoteTag } from "@/types/note";
 import { Metadata } from "next";
+import { fetchNotes } from "@/lib/api/clientApi";
 
 type Props = {
   params: Promise<{ slug: string[] }>;
@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: category ? `Notes: ${category}` : "All Notes",
       description: `Your notes filtered by ${category} category.`,
-      url: `08-zustand-five-beryl.vercel.app/notes/filter/${category}`,
+      url: `https://09-auth-ten-iota.vercel.app/notes/filter/${category}`,
       images: [
         {
           url: "https://ac.goit.global/fullstack/react/notehub-og-meta.jpg",

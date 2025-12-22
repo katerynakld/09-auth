@@ -2,7 +2,6 @@
 
 import NoteList from "@/components/NoteList/NoteList";
 import css from "./NotesPage.module.css";
-import { fetchNotes } from "@/lib/api";
 import { useState } from "react";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import Pagination from "@/components/Pagination/Pagination";
@@ -10,6 +9,8 @@ import SearchBox from "@/components/SearchBox/SearchBox";
 import { useDebounce } from "use-debounce";
 import { NoteTag } from "@/types/note";
 import Link from "next/link";
+import { fetchNotes } from "@/lib/api/clientApi";
+import Button from "@/components/Button/Button";
 
 interface NotesProps {
   tag?: NoteTag;
@@ -41,9 +42,9 @@ function NotesClient({ tag }: NotesProps) {
         {totalPages > 1 && (
           <Pagination totalPages={totalPages} page={page} setPage={setPage} />
         )}
-        <Link className={css.button} href="/notes/action/create">
+        <Button variant="primary" href="/notes/action/create">
           Create note +
-        </Link>
+        </Button>
       </header>
       {isSuccess && <NoteList notes={data.notes} />}
     </div>

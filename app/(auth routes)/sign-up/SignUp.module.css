@@ -1,8 +1,27 @@
+.mainContent {
+  flex: 1;
+}
+
 .form {
-  margin: 24px auto;
   display: flex;
   flex-direction: column;
   gap: 16px;
+  max-width: 440px;
+  background-color: rgba(255, 246, 126, 0.5);
+  margin: 40px auto;
+  padding: 32px;
+
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.formTitle {
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 8px;
+  color: var(--accent-2);
 }
 
 .formGroup {
@@ -18,12 +37,11 @@
   margin-bottom: 8px;
 }
 
-.input,
-.textarea,
-.select {
+.input {
   margin-top: 4px;
   padding: 8px 12px;
   font-size: 14px;
+  background-color: #fff;
   font-family: var(--font-space-mono);
   border: 3px solid var(--primary-color);
   border-radius: 4px;
@@ -53,15 +71,11 @@
   transition: all 0.2s ease-in-out;
 }
 
-.input:focus-within,
-.textarea:focus-within,
-.select:focus-within {
+.input:focus-within {
   outline: none;
 }
 
-.input:hover,
-.textarea:hover,
-.select:hover {
+.input:hover {
   border-color: #e57f3d;
   cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24"><path fill="%23FFF67E" stroke="%23042378" stroke-width="2.5" d="M15 9V4.5c0-.83-.67-1.5-1.5-1.5h-3C9.67 3 9 3.67 9 4.5V9H4.5C3.67 9 3 9.67 3 10.5v3c0 .83.67 1.5 1.5 1.5H9v4.5c0 .83.67 1.5 1.5 1.5h3c.83 0 1.5-.67 1.5-1.5V15h4.5c.83 0 1.5-.67 1.5-1.5v-3c0-.83-.67-1.5-1.5-1.5H15Z"></path></svg>'),
     auto;
@@ -74,7 +88,8 @@
 }
 
 .error {
-  color: var(--accent-1);
-  font-size: 8px;
+  color: #dc3545;
+  font-size: 12px;
   margin-top: 4px;
+  text-align: center;
 }

@@ -4,6 +4,7 @@ import { Press_Start_2P, Space_Mono, Roboto } from "next/font/google";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import TanStackProvider from "@/components/TanStackProvider/TanStackProvider";
+import AuthProvider from "@/components/AuthProvider/AuthProvider";
 
 const pressStart = Press_Start_2P({
   subsets: ["latin"],
@@ -57,10 +58,12 @@ export default function RootLayout({
         className={`${pressStart.variable} ${spaceMono.variable} ${roboto.variable}`}
       >
         <TanStackProvider>
-          <Header />
-          {children}
-          {modal}
-          <Footer />
+          <AuthProvider>
+            <Header />
+            {children}
+            {modal}
+            <Footer />
+          </AuthProvider>
         </TanStackProvider>
       </body>
     </html>

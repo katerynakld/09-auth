@@ -1,3 +1,5 @@
+import AuthNavigation from "../AuthNavigation/AuthNavigation";
+import Button from "../Button/Button";
 import css from "./Header.module.css";
 import Link from "next/link";
 
@@ -11,15 +13,16 @@ function Header() {
       <nav aria-label="Main Navigation">
         <ul className={css.navigation}>
           <li className={css.navigationItem}>
-            <Link href="/" className={css.navigationLink}>
+            <Button href="/" variant="primary" size="large">
               Home
-            </Link>
-          </li>
+            </Button>
+          </li>{" "}
           <li className={css.navigationItem}>
-            <Link href="/notes/filter/all" className={css.navigationLink}>
+            <Button href="/notes/filter/all" size="large" variant="primary">
               Notes
-            </Link>
+            </Button>
           </li>
+          <AuthNavigation />
         </ul>
       </nav>
     </header>

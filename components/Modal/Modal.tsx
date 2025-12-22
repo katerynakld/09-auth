@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import css from "./Modal.module.css";
 import { createPortal } from "react-dom";
+import Button from "../Button/Button";
 
 interface ModalProps {
   onClose: () => void;
@@ -41,9 +42,9 @@ function Modal({ onClose, children }: ModalProps) {
     >
       <div className={css.modal}>
         <div className={css.buttonBox}>
-          <button onClick={onClose} className={css.button}>
+          <Button onClick={onClose} variant="cancel" size="small">
             Close
-          </button>
+          </Button>
         </div>
         {children}
       </div>

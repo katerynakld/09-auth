@@ -4,10 +4,10 @@ import css from "./NoteForm.module.css";
 import type { NoteTag } from "../../types/note";
 import toast from "react-hot-toast";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { createNote, type NewNoteData } from "@/lib/api";
-import { routerServerGlobal } from "next/dist/server/lib/router-utils/router-server-context";
 import { useRouter } from "next/navigation";
 import { useNoteDraftStore } from "@/lib/store/noteStore";
+import { createNote } from "@/lib/api/clientApi";
+import Button from "../Button/Button";
 
 export interface NoteFormValues {
   title: string;
@@ -104,16 +104,12 @@ function NoteForm() {
       </div>
 
       <div className={css.actions}>
-        <button
-          onClick={handleCancel}
-          type="button"
-          className={css.cancelButton}
-        >
+        <Button onClick={handleCancel} type="button" variant="cancel">
           Cancel
-        </button>
-        <button type="submit" className={css.submitButton} disabled={false}>
+        </Button>
+        <Button type="submit" variant="submit" disabled={false}>
           Create note
-        </button>
+        </Button>
       </div>
     </form>
   );

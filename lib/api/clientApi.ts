@@ -64,7 +64,7 @@ export async function deleteNote(noteID: string) {
 // _______________________Auth___________________
 
 export type RegisterRequest = {
-  userName: string;
+  username: string;
   email: string;
   password: string;
 };

@@ -1,41 +1,49 @@
 "use client";
 
 import React from "react";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import css from "./Button.module.css";
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+type CommonProps = {
   variant?: "primary" | "cancel" | "submit";
   size?: "small" | "medium" | "large";
-  href?: string;
-}
+  className?: string;
+  children: React.ReactNode;
+};
 
-const Button: React.FC<ButtonProps> = ({
+type ButtonOnlyProps = CommonProps &
+  React.ButtonHTMLAttributes<HTMLButtonElement> & {
+    href?: never;
+  };
+
+type LinkOnlyProps = CommonProps & {
+  href: string;
+};
+
+type ButtonProps = ButtonOnlyProps | LinkOnlyProps;
+
+const Button = ({
   variant = "primary",
   size = "medium",
   href,
   children,
+  className,
   ...props
-}) => {
-  const router = useRouter();
-
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    if (href) {
-      e.preventDefault();
-      router.push(href);
-    }
-
-    if (props.onClick) {
-      props.onClick(e);
-    }
-  };
-
-  const className = [css.button, css[variant], css[size], props.className]
+}: ButtonProps) => {
+  const classes = [css.button, css[variant], css[size], className]
     .filter(Boolean)
     .join(" ");
 
+  if (href) {
+    return (
+      <Link href={href} prefetch={false} className={classes}>
+        {children}
+      </Link>
+    );
+  }
+
   return (
-    <button {...props} onClick={handleClick} className={className}>
+    <button {...props} className={classes}>
       {children}
     </button>
   );

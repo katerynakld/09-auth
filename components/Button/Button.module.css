@@ -1,5 +1,6 @@
 /* Base button style */
 .button {
+  all: unset;
   position: relative;
   display: inline-block;
   margin: 10px;

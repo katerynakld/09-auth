@@ -35,9 +35,10 @@ export default async function Profile() {
             Edit Profile
           </Button>
         </div>
+
         <div className={css.avatarWrapper}>
           <Image
-            src={user.avatar}
+            src="/UserAvatar.webp"
             alt="User Avatar"
             width={120}
             height={120}
@@ -46,8 +47,12 @@ export default async function Profile() {
           />
         </div>
         <div className={css.profileInfo}>
-          <p>Username: {user.username}</p>
-          <p>Email: {user.email}</p>
+          <p>
+            Username: <span className={css.userInfo}>{user.username}</span>
+          </p>
+          <p>
+            Email: <span className={css.userInfo}>{user.email}</span>
+          </p>
         </div>
       </div>
     </main>

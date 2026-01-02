@@ -1,11 +1,11 @@
 "use client";
 
-import Link from "next/link";
 import css from "./AuthNavigation.module.css";
 import { useAuthStore } from "@/lib/store/authStore";
 import { useRouter } from "next/navigation";
 import { logout } from "@/lib/api/clientApi";
 import Button from "../Button/Button";
+import Image from "next/image";
 
 export default function AuthNavigation() {
   const router = useRouter();
@@ -28,29 +28,43 @@ export default function AuthNavigation() {
   return isAuthenticated ? (
     <>
       <li className={css.navigationItem}>
-        <Link href="/profile" prefetch={false} className={css.navigationLink}>
+        <Button href="/profile" variant="primary" size="large">
           Profile
-        </Link>
+        </Button>
       </li>
+
       <li className={css.logoutItem}>
-        <p className={css.userEmail}>{user?.email}</p>
         <Button onClick={handleLogout} variant="cancel" size="large">
           Logout
         </Button>
+      </li>
+      <li className={css.welcomeItem}>
+        <p className={css.userWelcome}>
+          Welcome, <br />
+          {user?.username}
+        </p>
+        <Image
+          src={"/UserAvatar.webp"}
+          alt="User Avatar"
+          width={40}
+          height={40}
+          loading="eager"
+          className={css.avatar}
+        />
       </li>
     </>
   ) : (
     <>
       <li className={css.navigationItem}>
-        <Link href="/sign-in" prefetch={false} className={css.navigationLink}>
+        <Button href="/sign-in" variant="primary" size="large">
           Login
-        </Link>
+        </Button>
       </li>
 
       <li className={css.navigationItem}>
-        <Link href="/sign-up" prefetch={false} className={css.navigationLink}>
+        <Button href="/sign-up" variant="primary" size="large">
           Sign up
-        </Link>
+        </Button>
       </li>
     </>
   );

@@ -1,16 +1,27 @@
 :root {
-  --background: #f7f7f7;
-  --foreground: #171717;
-  --primary-color: #ff9c5b;
-  --secondary-color: #fff67e;
-  --accent-1: #ac0b29;
-  --accent-2: #042378;
+  --background: #f6f8fb; /* app background */
+  --foreground: #1e1e2f; /* main text */
+
+  --card-bg: rgba(255, 245, 170, 0.35);
+
+  --primary-color: #4fa3a5; /* main actions */
+  --secondary-color: #fff2a8; /* highlights / playful accents */
+
+  --accent-1: #e26a8d; /* alerts / emphasis */
+  --accent-2: #2f4aa8;
+  --muted-text: #6f6a5e;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0f1115; /* deep charcoal, not pure black */
+    --foreground: #e6e8eb; /* soft off-white for readability */
+    --primary-color: #3fbf9b; /* vibrant teal-green, pops on dark */
+    --secondary-color: #2a2f3a; /* dark surface / card background */
+    --accent-1: #e46a8c; /* warm pink accent (buttons, highlights) */
+    --accent-2: #5b7cfa; /* soft electric blue for links/actions */
+    --card-bg: rgba(255, 215, 100, 0.08);
+    --muted-text: #9aa0c2;
   }
 }
 
@@ -29,7 +40,8 @@ body {
   justify-content: space-between;
   min-height: 100vh;
   margin: 0;
-  background-color: #f7f7f7;
+  background-color: var(--background);
+  color: var(--foreground);
 }
 
 * {

@@ -28,7 +28,7 @@ export default function SignIn() {
     } catch (error) {
       const axiosError = error as AxiosError<{ message: string }>;
 
-      setError(axiosError.response?.data?.message || "Registration failed");
+      setError(axiosError.response?.data?.message || "Login failed");
     }
   };
 

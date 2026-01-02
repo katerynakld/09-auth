@@ -44,6 +44,10 @@
   align-items: flex-start;
 }
 
+.userInfo {
+  color: var(--accent-1);
+}
+
 .usernameWrapper {
   width: 100%;
   display: flex;

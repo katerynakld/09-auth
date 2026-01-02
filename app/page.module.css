@@ -20,7 +20,7 @@
 .description {
   font-family: var(--font-space-mono);
   font-size: 18px;
-  color: #444444;
+  color: var(--muted-text);
   line-height: 28px;
   margin-bottom: 16px;
 }

@@ -7,12 +7,10 @@
   flex-direction: column;
   gap: 16px;
   max-width: 440px;
-  background-color: rgba(255, 246, 126, 0.5);
+  background-color: var(--card-bg);
   margin: 40px auto;
   padding: 32px;
-
-  border: 1px solid #dee2e6;
-  border-radius: 8px;
+  border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
@@ -72,11 +70,12 @@
 }
 
 .input:focus-within {
+  border-color: var(--accent-2);
   outline: none;
 }
 
 .input:hover {
-  border-color: #e57f3d;
+  border-color: var(--accent-2);
   cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24"><path fill="%23FFF67E" stroke="%23042378" stroke-width="2.5" d="M15 9V4.5c0-.83-.67-1.5-1.5-1.5h-3C9.67 3 9 3.67 9 4.5V9H4.5C3.67 9 3 9.67 3 10.5v3c0 .83.67 1.5 1.5 1.5H9v4.5c0 .83.67 1.5 1.5 1.5h3c.83 0 1.5-.67 1.5-1.5V15h4.5c.83 0 1.5-.67 1.5-1.5v-3c0-.83-.67-1.5-1.5-1.5H15Z"></path></svg>'),
     auto;
 }

@@ -7,11 +7,12 @@ import { getMe, updateMe } from "@/lib/api/clientApi";
 import { useAuthStore } from "@/lib/store/authStore";
 import css from "./EditProfile.module.css";
 import Button from "@/components/Button/Button";
+import LoaderEl from "@/components/LoaderEl/LoaderEl";
 
 export default function EditProfile() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
-  const [avatar, setAvatar] = useState("/default-avatar.png");
+  const [avatar, setAvatar] = useState("/UserAvatar.webp");
   const [loading, setLoading] = useState(true);
 
   const router = useRouter();
@@ -24,7 +25,7 @@ export default function EditProfile() {
         if (user) {
           setUsername(user.username ?? "");
           setEmail(user.email ?? "");
-          setAvatar(user.avatar ?? "/default-avatar.png");
+          setAvatar("/UserAvatar.webp");
         }
       } catch (error) {
         console.error("Failed to fetch user:", error);
@@ -51,7 +52,7 @@ export default function EditProfile() {
 
   const handleCancel = () => router.push("/profile");
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <LoaderEl />;
 
   return (
     <main className={css.mainContent}>
